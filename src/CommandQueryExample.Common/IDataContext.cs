@@ -11,6 +11,6 @@ namespace CommandQueryExample.Common
 
         Task<int> SaveChangesAsync();
 
-        void SaveChangesInTransaction();
+        void SaveChangesWithTransaction();
     }
 }

@@ -4,7 +4,7 @@ using CommandQueryExample.Common.Extensions;
 
 namespace CommandQueryExample.Common.StandardQueries.Async
 {
-    public class SingleAsyncQuery<T> : AsyncScalarQueryBase<T> where T : class
+    public class SingleAsyncQuery<T> : BaseAsyncScalarQuery<T> where T : class
     {
         public SingleAsyncQuery(Expression<Func<T, bool>> where)
         {

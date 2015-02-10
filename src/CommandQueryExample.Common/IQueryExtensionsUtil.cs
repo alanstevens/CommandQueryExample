@@ -9,17 +9,17 @@ namespace CommandQueryExample.Common
 {
     public interface IQueryExtensionsUtil : IStartupTask
     {
-        Task<bool> AllAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class;
+        Task<bool> AllAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class;
 
-        Task<bool> AllAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class;
+        Task<bool> AllAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
 
         Task<bool> AnyAsync<T>(IQueryable<T> collection) where T : class;
 
         Task<bool> AnyAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken) where T : class;
 
-        Task<bool> AnyAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class;
+        Task<bool> AnyAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class;
 
-        Task<bool> AnyAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class;
+        Task<bool> AnyAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
 
         IQueryable<T> AsNoTracking<T>(IQueryable<T> collection) where T : class;
 
@@ -31,9 +31,9 @@ namespace CommandQueryExample.Common
 
         Task<int> CountAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken) where T : class;
 
-        Task<int> CountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class;
+        Task<int> CountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class;
 
-        Task<int> CountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class;
+        Task<int> CountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
 
         T Find<T>(IQueryable<T> collection, params object[] keyValues) where T : class;
 
@@ -45,17 +45,17 @@ namespace CommandQueryExample.Common
 
         Task<T> FirstAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken) where T : class;
 
-        Task<T> FirstAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class;
+        Task<T> FirstAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class;
 
-        Task<T> FirstAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class;
+        Task<T> FirstAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
 
         Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection) where T : class;
 
         Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken) where T : class;
 
-        Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class;
+        Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class;
 
-        Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class;
+        Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
 
         Task ForEachAsync<T>(IQueryable<T> collection, Action<T> action) where T : class;
 
@@ -75,41 +75,41 @@ namespace CommandQueryExample.Common
 
         Task<long> LongCountAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken) where T : class;
 
-        Task<long> LongCountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class;
+        Task<long> LongCountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class;
 
-        Task<long> LongCountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class;
+        Task<long> LongCountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
 
         Task<T> MaxAsync<T>(IQueryable<T> collection) where T : class;
 
         Task<T> MaxAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken) where T : class;
 
-        Task<TResult> MaxAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> where) where T : class;
+        Task<TResult> MaxAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> selector) where T : class;
 
-        Task<TResult> MaxAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> where, CancellationToken cancellationToken) where T : class;
+        Task<TResult> MaxAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> selector, CancellationToken cancellationToken) where T : class;
 
         Task<T> MinAsync<T>(IQueryable<T> collection) where T : class;
 
         Task<T> MinAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken) where T : class;
 
-        Task<TResult> MinAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> where) where T : class;
+        Task<TResult> MinAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> selector) where T : class;
 
-        Task<TResult> MinAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> where, CancellationToken cancellationToken) where T : class;
+        Task<TResult> MinAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> selector, CancellationToken cancellationToken) where T : class;
 
         Task<T> SingleAsync<T>(IQueryable<T> collection) where T : class;
 
         Task<T> SingleAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken) where T : class;
 
-        Task<T> SingleAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class;
+        Task<T> SingleAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class;
 
-        Task<T> SingleAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class;
+        Task<T> SingleAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
 
         Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection) where T : class;
 
         Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken) where T : class;
 
-        Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class;
+        Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class;
 
-        Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class;
+        Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
 
         IQueryable<T> Skip<T>(IQueryable<T> collection, Expression<Func<int>> countAccessor) where T : class;
 

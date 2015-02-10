@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CommandQueryExample.Common
 {
-    public abstract class AsyncQueryBase<T> where T : class
+    public abstract class BaseAsyncQuery<T> where T : class
     {
         protected Func<IQueryable<T>, Task<IEnumerable<T>>> _query;
 

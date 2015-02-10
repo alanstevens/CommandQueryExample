@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CommandQueryExample.Common
 {
-    public abstract class QueryBase<T> where T : class
+    public abstract class BaseQuery<T> where T : class
     {
         protected Func<IQueryable<T>, IEnumerable<T>> _query;
 

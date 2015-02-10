@@ -16,22 +16,22 @@ namespace CommandQueryExample.Data
             }
         }
 
-        public IEnumerable<T> Get<T>(QueryBase<T> query) where T : class
+        public IEnumerable<T> Get<T>(BaseQuery<T> query) where T : class
         {
             return query.Call(Context.Set<T>());
         }
 
-        public async Task<IEnumerable<T>> GetAsync<T>(AsyncQueryBase<T> query) where T : class
+        public async Task<IEnumerable<T>> GetAsync<T>(BaseAsyncQuery<T> query) where T : class
         {
             return await query.CallAsync(Context.Set<T>());
         }
 
-        public T Find<T>(ScalarQueryBase<T> query) where T : class
+        public T GetScaler<T>(BaseScalarQuery<T> query) where T : class
         {
             return query.Call(Context.Set<T>());
         }
 
-        public async Task<T> FindAsync<T>(AsyncScalarQueryBase<T> query) where T : class
+        public async Task<T> GetScalerAsync<T>(BaseAsyncScalarQuery<T> query) where T : class
         {
             return await query.CallAsync(Context.Set<T>());
         }

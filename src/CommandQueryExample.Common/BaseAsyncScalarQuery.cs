@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace CommandQueryExample.Common
 {
-    public abstract class AsyncScalarQueryBase<T>
+    public abstract class BaseAsyncScalarQuery<T>
     {
         protected Func<IQueryable<T>, Task<T>> _query;
 

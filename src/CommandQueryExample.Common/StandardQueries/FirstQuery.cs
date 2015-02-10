@@ -5,7 +5,7 @@ using CommandQueryExample.Common.Extensions;
 
 namespace CommandQueryExample.Common.StandardQueries
 {
-    public class FirstQuery<T> : ScalarQueryBase<T> where T : class
+    public class FirstQuery<T> : BaseScalarQuery<T> where T : class
     {
         public FirstQuery(Expression<Func<T, bool>> where = null)
         {

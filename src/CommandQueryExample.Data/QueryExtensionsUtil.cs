@@ -10,21 +10,21 @@ using CommandQueryExample.Common.Extensions;
 
 namespace CommandQueryExample.Data
 {
-    public class QueryExtensionsUtil : IQueryExtensionsUtil, IStartupTask
+    public class QueryExtensionsUtil : IQueryExtensionsUtil
     {
         public void OnStartup()
         {
             QueryExtensions.Util = this;
         }
 
-        public async Task<bool> AllAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class
+        public async Task<bool> AllAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class
         {
-            return await QueryableExtensions.AllAsync(collection, where);
+            return await QueryableExtensions.AllAsync(collection, selector);
         }
 
-        public async Task<bool> AllAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class
+        public async Task<bool> AllAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class
         {
-            return await QueryableExtensions.AllAsync(collection, where, cancellationToken);
+            return await QueryableExtensions.AllAsync(collection, selector, cancellationToken);
         }
 
         public async Task<bool> AnyAsync<T>(IQueryable<T> collection) where T : class
@@ -37,14 +37,14 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.AnyAsync(collection, cancellationToken);
         }
 
-        public async Task<bool> AnyAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class
+        public async Task<bool> AnyAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class
         {
-            return await QueryableExtensions.AnyAsync(collection, where);
+            return await QueryableExtensions.AnyAsync(collection, selector);
         }
 
-        public async Task<bool> AnyAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class
+        public async Task<bool> AnyAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class
         {
-            return await QueryableExtensions.AnyAsync(collection, where, cancellationToken);
+            return await QueryableExtensions.AnyAsync(collection, selector, cancellationToken);
         }
 
         public IQueryable<T> AsNoTracking<T>(IQueryable<T> collection) where T : class
@@ -72,14 +72,14 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.CountAsync(collection, cancellationToken);
         }
 
-        public async Task<int> CountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class
+        public async Task<int> CountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class
         {
-            return await QueryableExtensions.CountAsync(collection, where);
+            return await QueryableExtensions.CountAsync(collection, selector);
         }
 
-        public async Task<int> CountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class
+        public async Task<int> CountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class
         {
-            return await QueryableExtensions.CountAsync(collection, where, cancellationToken);
+            return await QueryableExtensions.CountAsync(collection, selector, cancellationToken);
         }
 
         public T Find<T>(IQueryable<T> collection, params object[] keyValues) where T : class
@@ -107,14 +107,14 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.FirstAsync(collection, cancellationToken);
         }
 
-        public async Task<T> FirstAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class
+        public async Task<T> FirstAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class
         {
-            return await QueryableExtensions.FirstAsync(collection, where);
+            return await QueryableExtensions.FirstAsync(collection, selector);
         }
 
-        public async Task<T> FirstAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class
+        public async Task<T> FirstAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class
         {
-            return await QueryableExtensions.FirstAsync(collection, where, cancellationToken);
+            return await QueryableExtensions.FirstAsync(collection, selector, cancellationToken);
         }
 
         public async Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection) where T : class
@@ -127,14 +127,14 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.FirstOrDefaultAsync(collection, cancellationToken);
         }
 
-        public async Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class
+        public async Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class
         {
-            return await QueryableExtensions.FirstOrDefaultAsync(collection, where);
+            return await QueryableExtensions.FirstOrDefaultAsync(collection, selector);
         }
 
-        public async Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class
+        public async Task<T> FirstOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class
         {
-            return await QueryableExtensions.FirstOrDefaultAsync(collection, where,cancellationToken);
+            return await QueryableExtensions.FirstOrDefaultAsync(collection, selector,cancellationToken);
         }
 
         public async Task ForEachAsync<T>(IQueryable<T> collection, Action<T> action) where T : class
@@ -182,14 +182,14 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.LongCountAsync(collection, cancellationToken);
         }
 
-        public async Task<long> LongCountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class
+        public async Task<long> LongCountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class
         {
-            return await QueryableExtensions.LongCountAsync(collection, where);
+            return await QueryableExtensions.LongCountAsync(collection, selector);
         }
 
-        public async Task<long> LongCountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class
+        public async Task<long> LongCountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class
         {
-            return await QueryableExtensions.LongCountAsync(collection, where, cancellationToken);
+            return await QueryableExtensions.LongCountAsync(collection, selector, cancellationToken);
         }
 
         public async Task<T> MaxAsync<T>(IQueryable<T> collection) where T : class
@@ -202,14 +202,14 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.MaxAsync(collection, cancellationToken);
         }
 
-        public async Task<TResult> MaxAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> where) where T : class
+        public async Task<TResult> MaxAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> selector) where T : class
         {
-            return await QueryableExtensions.MaxAsync(collection, where);
+            return await QueryableExtensions.MaxAsync(collection, selector);
         }
 
-        public async Task<TResult> MaxAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> where, CancellationToken cancellationToken) where T : class
+        public async Task<TResult> MaxAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> selector, CancellationToken cancellationToken) where T : class
         {
-            return await QueryableExtensions.MaxAsync(collection, where, cancellationToken);
+            return await QueryableExtensions.MaxAsync(collection, selector, cancellationToken);
         }
 
         public async Task<T> MinAsync<T>(IQueryable<T> collection) where T : class
@@ -222,14 +222,14 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.MinAsync(collection, cancellationToken);
         }
 
-        public async Task<TResult> MinAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> where) where T : class
+        public async Task<TResult> MinAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> selector) where T : class
         {
-            return await QueryableExtensions.MinAsync(collection, where);
+            return await QueryableExtensions.MinAsync(collection, selector);
         }
 
-        public async Task<TResult> MinAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> where, CancellationToken cancellationToken) where T : class
+        public async Task<TResult> MinAsync<T, TResult>(IQueryable<T> collection, Expression<Func<T, TResult>> selector, CancellationToken cancellationToken) where T : class
         {
-            return await QueryableExtensions.MinAsync(collection, where, cancellationToken);
+            return await QueryableExtensions.MinAsync(collection, selector, cancellationToken);
         }
 
         public async Task<T> SingleAsync<T>(IQueryable<T> collection) where T : class
@@ -242,14 +242,14 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.SingleAsync(collection, cancellationToken);
         }
 
-        public async Task<T> SingleAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class
+        public async Task<T> SingleAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class
         {
-            return await QueryableExtensions.SingleAsync(collection, where);
+            return await QueryableExtensions.SingleAsync(collection, selector);
         }
 
-        public async Task<T> SingleAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class
+        public async Task<T> SingleAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class
         {
-            return await QueryableExtensions.SingleAsync(collection, where, cancellationToken);
+            return await QueryableExtensions.SingleAsync(collection, selector, cancellationToken);
         }
 
         public async Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection) where T : class
@@ -262,14 +262,14 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.SingleOrDefaultAsync(collection, cancellationToken);
         }
 
-        public async Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where) where T : class
+        public async Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class
         {
-            return await QueryableExtensions.SingleOrDefaultAsync(collection, where);
+            return await QueryableExtensions.SingleOrDefaultAsync(collection, selector);
         }
 
-        public async Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> where, CancellationToken cancellationToken) where T : class
+        public async Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class
         {
-            return await QueryableExtensions.SingleOrDefaultAsync(collection, where, cancellationToken);
+            return await QueryableExtensions.SingleOrDefaultAsync(collection, selector, cancellationToken);
         }
 
         public IQueryable<T> Skip<T>(IQueryable<T> collection, Expression<Func<int>> countAccessor) where T : class

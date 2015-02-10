@@ -29,7 +29,7 @@ namespace CommandQueryExample.Data
             return await Context.SaveChangesAsync();
         }
 
-        public void SaveChangesInTransaction()
+        public void SaveChangesWithTransaction()
         {
             ValidateContext();
 

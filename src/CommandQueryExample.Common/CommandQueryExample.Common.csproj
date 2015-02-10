@@ -42,11 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncQueryBase.cs" />
-    <Compile Include="AsyncScalarQueryBase.cs" />
+    <Compile Include="BaseAsyncQuery.cs" />
+    <Compile Include="BaseAsyncScalarQuery.cs" />
     <Compile Include="CommandBase.cs" />
-    <Compile Include="QueryBase.cs" />
-    <Compile Include="ScalarQueryBase.cs" />
+    <Compile Include="BaseQuery.cs" />
+    <Compile Include="BaseScalarQuery.cs" />
     <Compile Include="StandardCommands\AddCommand.cs" />
     <Compile Include="StandardCommands\AddManyCommand.cs" />
     <Compile Include="StandardCommands\DeleteCommand.cs" />

@@ -4,7 +4,7 @@ using CommandQuerySample.Domain;
 
 namespace CommandQueryExample.Core
 {
-    public class GetPeopleByFirstNameQuery : QueryBase<Person>
+    public class GetPeopleByFirstNameQuery : BaseQuery<Person>
     {
         public GetPeopleByFirstNameQuery(string firstName)
         {
