@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace CommandQueryExample.Common.Queries
+namespace CommandQueryExample.Common.StandardQueries
 {
     public class GetAllQuery<T> : QueryBase<T> where T : class
     {

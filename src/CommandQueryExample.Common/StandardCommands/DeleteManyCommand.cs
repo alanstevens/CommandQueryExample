@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using CommandQueryExample.Common.Extensions;
 
-namespace CommandQueryExample.Common.Commands
+namespace CommandQueryExample.Common.StandardCommands
 {
     public class DeleteManyCommand<T> : CommandBase<T> where T : class
     {

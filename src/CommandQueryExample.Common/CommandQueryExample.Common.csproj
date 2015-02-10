@@ -58,8 +58,8 @@
     <Compile Include="Extensions\CommandExtensions.cs" />
     <Compile Include="ICommandExtensionsUtil.cs" />
     <Compile Include="IDataContext.cs" />
-    <Compile Include="StandardQueries\GetAllAsyncQuery.cs" />
-    <Compile Include="StandardQueries\SingleAsyncQuery.cs" />
+    <Compile Include="StandardQueries\Async\GetAllAsyncQuery.cs" />
+    <Compile Include="StandardQueries\Async\SingleAsyncQuery.cs" />
     <Compile Include="StandardQueries\GetAllQuery.cs" />
     <Compile Include="StandardQueries\SingleQuery.cs" />
     <Compile Include="Extensions\QueryExtensions.cs" />
@@ -74,15 +74,15 @@
     <Compile Include="IStartupTask.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StandardQueries\FindAsyncQuery.cs" />
+    <Compile Include="StandardQueries\Async\FindAsyncQuery.cs" />
     <Compile Include="StandardQueries\FindQuery.cs" />
-    <Compile Include="StandardQueries\FirstAsyncQuery.cs" />
-    <Compile Include="StandardQueries\FirstOrDefaultAsyncQuery.cs" />
+    <Compile Include="StandardQueries\Async\FirstAsyncQuery.cs" />
+    <Compile Include="StandardQueries\Async\FirstOrDefaultAsyncQuery.cs" />
     <Compile Include="StandardQueries\FirstOrDefaultQuery.cs" />
     <Compile Include="StandardQueries\FirstQuery.cs" />
-    <Compile Include="StandardQueries\SingleOrDefaultAsyncQuery.cs" />
+    <Compile Include="StandardQueries\Async\SingleOrDefaultAsyncQuery.cs" />
     <Compile Include="StandardQueries\SingleOrDefaultQuery.cs" />
-    <Compile Include="StandardQueries\WhereAsyncQuery.cs" />
+    <Compile Include="StandardQueries\Async\WhereAsyncQuery.cs" />
     <Compile Include="StandardQueries\WhereQuery.cs" />
     <Compile Include="Verify.cs" />
   </ItemGroup>

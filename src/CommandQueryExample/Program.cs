@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CommandQueryExample.Common;
-using CommandQueryExample.Common.Commands;
+using CommandQueryExample.Common.StandardCommands;
 using CommandQueryExample.Core;
 using CommandQueryExample.Data;
 using CommandQuerySample.Domain;

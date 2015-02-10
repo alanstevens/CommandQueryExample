@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace CommandQueryExample.Common.Queries
+namespace CommandQueryExample.Common.StandardQueries
 {
     public class WhereQuery<T> : QueryBase<T> where T : class
     {

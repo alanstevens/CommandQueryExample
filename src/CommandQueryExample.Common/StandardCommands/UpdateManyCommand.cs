@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CommandQueryExample.Common.Commands
+namespace CommandQueryExample.Common.StandardCommands
 {
     public class UpdateManyCommand<T> : CommandBase<T> where T : class
     {

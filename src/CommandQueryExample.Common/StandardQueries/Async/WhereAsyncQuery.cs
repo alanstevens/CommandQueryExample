@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using CommandQueryExample.Common.Extensions;
 
-namespace CommandQueryExample.Common.Queries
+namespace CommandQueryExample.Common.StandardQueries.Async
 {
     public class WhereAsyncQuery<T> : AsyncQueryBase<T> where T : class
     {

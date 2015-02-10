@@ -1,6 +1,6 @@
 ﻿using CommandQueryExample.Common.Extensions;
 
-namespace CommandQueryExample.Common.Commands
+namespace CommandQueryExample.Common.StandardCommands
 {
     public class AddCommand<T> : CommandBase<T> where T : class
     {

@@ -1,6 +1,6 @@
 using CommandQueryExample.Common.Extensions;
 
-namespace CommandQueryExample.Common.Queries
+namespace CommandQueryExample.Common.StandardQueries
 {
     public class FindQuery<T> : ScalarQueryBase<T> where T : class
     {

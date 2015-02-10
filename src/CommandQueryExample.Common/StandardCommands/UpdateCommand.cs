@@ -1,4 +1,4 @@
-﻿namespace CommandQueryExample.Common.Commands
+﻿namespace CommandQueryExample.Common.StandardCommands
 {
     public class UpdateCommand<T> : CommandBase<T> where T : class
     {
