@@ -7,7 +7,7 @@ much and violates SRP.
 
 I have used an `IRepository<T>` for years to abstract the DbContext away from my
 application code but it turns out that repositories aren't cool anymore and I've
-been doing it wrong (succesfuly) for years. It's all
+been doing it wrong (successfully) for years. It's all
 command and query objects these days. You can read all about why I'm wrong to use an
 `IRepository<T>` in the links below.
 
