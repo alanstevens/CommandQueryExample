@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CommandQueryExample.Common.Queries
+namespace CommandQueryExample.Common
 {
     public abstract class AsyncScalarQueryBase<T>
     {

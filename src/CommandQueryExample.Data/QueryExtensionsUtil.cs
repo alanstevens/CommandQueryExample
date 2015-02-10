@@ -11,11 +11,6 @@ namespace CommandQueryExample.Data
 {
     public class QueryExtensionsUtil : IQueryExtensionsUtil, IStartupTask
     {
-        public void OnStartup()
-        {
-            QueryExtensions.Util = this;
-        }
-
         public T Find<T>(IQueryable<T> collection, object id) where T : class
         {
             return GetSet(collection).Find(id);
@@ -63,6 +58,11 @@ namespace CommandQueryExample.Data
         public IQueryable<T> Include<T, P>(IQueryable<T> collection, Expression<Func<T, P>> path) where T : class
         {
             return QueryableExtensions.Include(collection, path);
+        }
+
+        public void OnStartup()
+        {
+            QueryExtensions.Util = this;
         }
 
         static DbSet<T> GetSet<T>(IEnumerable<T> collection) where T : class

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CommandQueryExample.Common.Queries
+namespace CommandQueryExample.Common
 {
     public abstract class QueryBase<T> where T : class
     {

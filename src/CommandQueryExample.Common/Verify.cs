@@ -161,7 +161,7 @@ namespace CommandQueryExample.Common
             if (!EqualityComparer<T>.Default.Equals(expected, actual))
             {
                 throw new ArgumentOutOfRangeException(argumentName,
-                                                      argumentName + " must be " + expected + ", but was " + actual + ".");
+                    argumentName + " must be " + expected + ", but was " + actual + ".");
             }
         }
 

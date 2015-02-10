@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using CommandQueryExample.Common.Queries;
+using CommandQueryExample.Common;
 using CommandQuerySample.Domain;
 
 namespace CommandQueryExample.Core

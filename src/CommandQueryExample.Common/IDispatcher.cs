@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using CommandQueryExample.Common.Commands;
-using CommandQueryExample.Common.Queries;
 
 namespace CommandQueryExample.Common
 {

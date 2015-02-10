@@ -7,7 +7,7 @@ namespace CommandQueryExample.Data
     {
         protected override void Seed(SampleContext context)
         {
-            context.People.Add(new Person{FirstName = "Alan", LastName = "Stevens"});
+            context.People.Add(new Person {FirstName = "Alan", LastName = "Stevens"});
         }
     }
 }

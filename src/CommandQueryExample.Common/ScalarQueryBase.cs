@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace CommandQueryExample.Common.Queries
+namespace CommandQueryExample.Common
 {
     public abstract class ScalarQueryBase<T>
     {

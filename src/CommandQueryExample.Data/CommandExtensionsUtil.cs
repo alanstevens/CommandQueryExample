@@ -4,15 +4,10 @@ using System.Linq;
 using CommandQueryExample.Common;
 using CommandQueryExample.Common.Extensions;
 
-namespace CommandQueryExample.Data 
+namespace CommandQueryExample.Data
 {
     public class CommandExtensionsUtil : ICommandExtensionsUtil, IStartupTask
     {
-        public void OnStartup()
-        {
-            CommandExtensions.Util = this;
-        }
-
         public T Add<T>(IQueryable<T> collection, T item) where T : class
         {
             return GetSet(collection).Add(item);
@@ -31,6 +26,11 @@ namespace CommandQueryExample.Data
         public IEnumerable<T> DeleteMany<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class
         {
             return GetSet(collection).RemoveRange(items);
+        }
+
+        public void OnStartup()
+        {
+            CommandExtensions.Util = this;
         }
 
         static DbSet<T> GetSet<T>(IEnumerable<T> collection) where T : class

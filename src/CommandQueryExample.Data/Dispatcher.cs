@@ -2,8 +2,6 @@
 using System.Data.Entity;
 using System.Threading.Tasks;
 using CommandQueryExample.Common;
-using CommandQueryExample.Common.Commands;
-using CommandQueryExample.Common.Queries;
 
 namespace CommandQueryExample.Data
 {

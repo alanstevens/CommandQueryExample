@@ -27,7 +27,7 @@ namespace CommandQueryExample.Common
             {
                 lock (_lock)
                 {
-                    if (_currentContext.IsNotNull() && !_currentContext.IsDisposed) 
+                    if (_currentContext.IsNotNull() && !_currentContext.IsDisposed)
                         throw new Exception("CurrentContext has not been disposed.");
                     _currentContext = value;
                 }
@@ -42,7 +42,7 @@ namespace CommandQueryExample.Common
                 {
                     if (_createDataContext.IsNull())
                         throw new NullReferenceException("DataContextFactory CreateDataContext is not properly configured.");
-                    if (_currentContext.IsNotNull() && !_currentContext.IsDisposed) 
+                    if (_currentContext.IsNotNull() && !_currentContext.IsDisposed)
                         throw new Exception("CurrentContext has not been disposed.");
                     return _createDataContext;
                 }

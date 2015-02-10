@@ -16,7 +16,7 @@ namespace CommandQueryExample.Common.Extensions
             if (e.IsNull()) return string.Empty;
 
             exceptionMessage = "{0}{1}{2}\n{3}".FormatWith(exceptionMessage, exceptionMessage.IsEmpty() ? "" : "\n\n",
-                                                           e.Message, e.StackTrace);
+                e.Message, e.StackTrace);
 
             if (e.InnerException.IsNotNull()) exceptionMessage = SerializeException(e.InnerException, exceptionMessage);
 

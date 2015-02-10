@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Linq;
 
-namespace CommandQueryExample.Common.Commands
+namespace CommandQueryExample.Common
 {
     public abstract class CommandBase<T>
     {
         // ReSharper disable FieldCanBeMadeReadOnly.Local
-        protected Action<IQueryable<T>> _action = x => { };
         // ReSharper restore FieldCanBeMadeReadOnly.Local
 
         protected CommandBase()
         {
             MarkAsModified = x => x;
             MarkAsAdded = x => x;
-            MarkAsDeleted = x => {};
+            MarkAsDeleted = x => { };
         }
 
+        protected Action<IQueryable<T>> _action = x => { };
 
         public Func<T, T> MarkAsModified { get; set; }
         public Func<T, T> MarkAsAdded { get; set; }
