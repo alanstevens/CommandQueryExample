@@ -11,8 +11,6 @@ namespace CommandQueryExample.Common
 
         T Delete<T>(IQueryable<T> collection, T item) where T : class;
 
-        T Delete<T>(IQueryable<T> collection, object key) where T : class;
-
         IEnumerable<T> DeleteMany<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class;
     }
 }

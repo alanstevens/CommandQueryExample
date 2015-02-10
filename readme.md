@@ -11,7 +11,7 @@ been doing it wrong (succesfuly) for years. It's all
 command and query objects these days. You can read all about why I'm wrong to use an
 IRepository<T> in the links below.
 
-At this point, this is just a thought experiment. I'd love to hear your
+At this point, this project is just a thought experiment. I'd love to hear your
 feedback. Please feel free to code review this project and open issues for
 changes you think are merited. If you get really enthusiastic, you can send a
 pull request, but I would rather just get comments in the issues, for now.

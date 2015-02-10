@@ -28,14 +28,6 @@ namespace CommandQueryExample.Data
             return GetSet(collection).Remove(item);
         }
 
-        public T Delete<T>(IQueryable<T> collection, object key) where T : class
-        {
-            var set = GetSet(collection);
-            var item = set.Find(key);
-            Verify.NotNull(item, "item");
-            return set.Remove(item);
-        }
-
         public IEnumerable<T> DeleteMany<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class
         {
             return GetSet(collection).RemoveRange(items);

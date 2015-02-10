@@ -6,12 +6,22 @@ namespace CommandQueryExample.Common.Commands
     {
         public DeleteCommand(T item)
         {
-            _action = s => s.Delete(item);
+            _action = s =>
+            {
+                s.Delete(item);
+                MarkAsDeleted(item);
+            };
         }
 
         public DeleteCommand(object key)
         {
-            _action = s => s.Delete(key);
+            _action = s =>
+            {
+                var item = s.Find(key);
+                Verify.NotNull(item, "item");
+                s.Delete(item);
+                MarkAsDeleted(item);
+            };
         }
     }
 }

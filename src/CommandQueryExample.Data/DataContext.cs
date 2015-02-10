@@ -17,28 +17,50 @@ namespace CommandQueryExample.Data
 
         public void SaveChanges()
         {
-            if (IsDisposed) throw new Exception("DbContext has been disposed.");
-            if (Context.IsNull()) throw new NullReferenceException("DbContext is null.");
+            ValidateContext();
 
             Context.SaveChanges();
         }
 
         public async Task<int> SaveChangesAsync()
         {
-            if (IsDisposed) throw new Exception("DbContext has been disposed.");
-            if (Context.IsNull()) throw new NullReferenceException("DbContext is null.");
+            ValidateContext();
 
             return await Context.SaveChangesAsync();
+        }
+
+        public void SaveChangesInTransaction()
+        {
+            ValidateContext();
+
+            using (var transaction = Context.Database.BeginTransaction())
+            {
+                try
+                {
+                    Context.SaveChanges();
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
         }
 
         protected override void OnDisposing(bool disposing)
         {
             if (!disposing) return;
 
-            if (IsDisposed) throw new Exception("DbContext has been disposed.");
-            if (Context.IsNull()) throw new NullReferenceException("DbContext is null.");
+            ValidateContext();
 
             Context.Dispose();
+        }
+
+        void ValidateContext()
+        {
+            if (IsDisposed) throw new Exception("DbContext has been disposed.");
+            if (Context.IsNull()) throw new NullReferenceException("DbContext is null.");
         }
     }
 }

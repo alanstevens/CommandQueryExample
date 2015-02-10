@@ -9,6 +9,8 @@ namespace CommandQueryExample.Common
 
         Task<int> SaveChangesAsync();
 
+        void SaveChangesInTransaction();
+
         bool IsDisposed { get; }
     }
 }

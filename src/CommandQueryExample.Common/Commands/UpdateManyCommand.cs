@@ -9,10 +9,7 @@ namespace CommandQueryExample.Common.Commands
             _action = s =>
             {
                 foreach (var item in items)
-                {
-                    AttachIfNeeded(item);
                     MarkAsModified(item);
-                }
             };
         }
     }

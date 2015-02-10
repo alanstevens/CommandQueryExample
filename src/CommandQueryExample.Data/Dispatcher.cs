@@ -40,26 +40,41 @@ namespace CommandQueryExample.Data
 
         public void QueueCommand<T>(CommandBase<T> command) where T : class
         {
-            command.AttachIfNeeded = AttachIfNeeded;
             command.MarkAsModified = MarkAsModified;
+            command.MarkAsAdded = MarkAsAdded;
+            command.MarkAsDeleted = MarkAsDeleted;
 
             command.Execute(Context.Set<T>());
 
-            command.AttachIfNeeded = x => x;
             command.MarkAsModified = x => x;
-        }
-
-        static T AttachIfNeeded<T>(T entity) where T : class
-        {
-            if (Context.Entry(entity).State == EntityState.Detached)
-                Context.Set<T>().Attach(entity);
-            return entity;
+            command.MarkAsAdded = x => x;
+            command.MarkAsDeleted = x => { };
         }
 
         static T MarkAsModified<T>(T entity) where T : class
         {
+            AttachIfNeeded(entity);
             Context.Entry(entity).State = EntityState.Modified;
             return entity;
+        }
+
+        static T MarkAsAdded<T>(T entity) where T : class
+        {
+            AttachIfNeeded(entity);
+            Context.Entry(entity).State = EntityState.Added;
+            return entity;
+        }
+
+        static void MarkAsDeleted<T>(T entity) where T : class
+        {
+            AttachIfNeeded(entity);
+            Context.Entry(entity).State = EntityState.Deleted;
+        }
+
+        static void AttachIfNeeded<T>(T entity) where T : class
+        {
+            if (Context.Entry(entity).State == EntityState.Detached)
+                Context.Set<T>().Attach(entity);
         }
     }
 }

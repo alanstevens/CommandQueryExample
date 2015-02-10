@@ -7,7 +7,12 @@ namespace CommandQueryExample.Common.Commands
     {
         public AddManyCommand(IEnumerable<T> items)
         {
-            _action = s => s.AddMany(items);
+            _action = s =>
+            {
+                s.AddMany(items);
+                foreach (var item in items)
+                    MarkAsAdded(item);
+            };
         }
     }
 }

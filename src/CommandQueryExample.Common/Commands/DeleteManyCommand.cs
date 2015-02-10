@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CommandQueryExample.Common.Extensions;
 
 namespace CommandQueryExample.Common.Commands
@@ -8,7 +7,12 @@ namespace CommandQueryExample.Common.Commands
     {
         public DeleteManyCommand(IEnumerable<T> items)
         {
-            _action = s => s.DeleteMany(items);
+            _action = s =>
+            {
+                s.DeleteMany(items);
+                foreach (var item in items)
+                    MarkAsDeleted(item);
+            };
         }
     }
 }

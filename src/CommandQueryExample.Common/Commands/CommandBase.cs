@@ -11,13 +11,15 @@ namespace CommandQueryExample.Common.Commands
 
         protected CommandBase()
         {
-            AttachIfNeeded = x => x;
             MarkAsModified = x => x;
+            MarkAsAdded = x => x;
+            MarkAsDeleted = x => {};
         }
 
-        public Func<T, T> AttachIfNeeded { get; set; }
 
         public Func<T, T> MarkAsModified { get; set; }
+        public Func<T, T> MarkAsAdded { get; set; }
+        public Action<T> MarkAsDeleted { get; set; }
 
         public void Execute(IQueryable<T> set)
         {
