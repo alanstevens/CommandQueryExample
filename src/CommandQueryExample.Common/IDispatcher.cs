@@ -9,9 +9,9 @@ namespace CommandQueryExample.Common
 
         Task<IEnumerable<T>> GetAsync<T>(BaseAsyncQuery<T> query) where T : class;
 
-        T GetScaler<T>(BaseScalarQuery<T> query) where T : class;
+        T GetScalar<T>(BaseScalarQuery<T> query) where T : class;
 
-        Task<T> GetScalerAsync<T>(BaseAsyncScalarQuery<T> query) where T : class;
+        Task<T> GetScalarAsync<T>(BaseAsyncScalarQuery<T> query) where T : class;
 
         void QueueCommand<T>(CommandBase<T> command) where T : class;
     }

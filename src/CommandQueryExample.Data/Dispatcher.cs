@@ -26,12 +26,12 @@ namespace CommandQueryExample.Data
             return await query.CallAsync(Context.Set<T>());
         }
 
-        public T GetScaler<T>(BaseScalarQuery<T> query) where T : class
+        public T GetScalar<T>(BaseScalarQuery<T> query) where T : class
         {
             return query.Call(Context.Set<T>());
         }
 
-        public async Task<T> GetScalerAsync<T>(BaseAsyncScalarQuery<T> query) where T : class
+        public async Task<T> GetScalarAsync<T>(BaseAsyncScalarQuery<T> query) where T : class
         {
             return await query.CallAsync(Context.Set<T>());
         }
