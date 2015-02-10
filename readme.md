@@ -19,7 +19,7 @@ pull request, but I would rather just get comments in the issues, for now.
 I borrowed some ideas from [Highway.Data] (https://github.com/HighwayFramework/Highway.Data), but my implementations are more
 simple.
 
-*Note: This is not an attempt to impliment CQRS which is [a much more complex pattern] (http://www.udidahan.com/2009/12/09/clarified-cqrs/).*
+*Note: This is not an attempt to implement CQRS which is [a much more complex pattern] (http://www.udidahan.com/2009/12/09/clarified-cqrs/).*
 
 ## TODO:
 - **Write tests!**
