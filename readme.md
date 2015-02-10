@@ -1,15 +1,15 @@
-# Command Query Sample
+# Command Query Example
 
 This project is an attempt to build a simple command and query data access system that I can use in my apps.
 It works by creating a thin wrapper around the Entity
 Framework DbContext. DbContext is a big smelly "god object." It tries to do too
 much and violates SRP.
 
-I have used an IRepository<T> for years to abstract the DbContext away from my
+I have used an `IRepository<T>` for years to abstract the DbContext away from my
 application code but it turns out that repositories aren't cool anymore and I've
 been doing it wrong (succesfuly) for years. It's all
 command and query objects these days. You can read all about why I'm wrong to use an
-IRepository<T> in the links below.
+`IRepository<T>` in the links below.
 
 At this point, this project is just a thought experiment. I'd love to hear your
 feedback. Please feel free to code review this project and open issues for
