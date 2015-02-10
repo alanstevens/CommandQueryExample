@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91D84F63-79B8-4DC5-A822-EEA3E65C26A4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CommandQueryExample.Common</RootNamespace>
+    <AssemblyName>CommandQueryExample.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\AddCommand.cs" />
+    <Compile Include="Commands\AddManyCommand.cs" />
+    <Compile Include="Commands\DeleteCommand.cs" />
+    <Compile Include="Commands\DeleteManyCommand.cs" />
+    <Compile Include="Commands\UpdateCommand.cs" />
+    <Compile Include="Commands\UpdateManyCommand.cs" />
+    <Compile Include="DataContextFactory.cs" />
+    <Compile Include="DisposableBase.cs" />
+    <Compile Include="Extensions\CommandExtensions.cs" />
+    <Compile Include="ICommandExtensionsUtil.cs" />
+    <Compile Include="IDataContext.cs" />
+    <Compile Include="Queries\AsyncQueryBase.cs" />
+    <Compile Include="Queries\AsyncScalarQueryBase.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Queries\GetAllAsyncQuery.cs" />
+    <Compile Include="Queries\SingleAsyncQuery.cs" />
+    <Compile Include="Queries\GetAllQuery.cs" />
+    <Compile Include="Queries\SingleQuery.cs" />
+    <Compile Include="Extensions\QueryExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\ExceptionExtensions.cs" />
+    <Compile Include="Extensions\LoggingExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="IQueryExtensionsUtil.cs" />
+    <Compile Include="IDispatcher.cs" />
+    <Compile Include="IStartupTask.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\FindAsyncQuery.cs" />
+    <Compile Include="Queries\FindQuery.cs" />
+    <Compile Include="Queries\FirstAsyncQuery.cs" />
+    <Compile Include="Queries\FirstOrDefaultAsyncQuery.cs" />
+    <Compile Include="Queries\FirstOrDefaultQuery.cs" />
+    <Compile Include="Queries\FirstQuery.cs" />
+    <Compile Include="Queries\QueryBase.cs" />
+    <Compile Include="Queries\ScalarQueryBase.cs" />
+    <Compile Include="Queries\SingleOrDefaultAsyncQuery.cs" />
+    <Compile Include="Queries\SingleOrDefaultQuery.cs" />
+    <Compile Include="Queries\WhereAsyncQuery.cs" />
+    <Compile Include="Queries\WhereQuery.cs" />
+    <Compile Include="Verify.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
