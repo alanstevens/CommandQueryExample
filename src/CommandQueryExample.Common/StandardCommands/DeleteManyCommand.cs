@@ -3,7 +3,7 @@ using CommandQueryExample.Common.Extensions;
 
 namespace CommandQueryExample.Common.StandardCommands
 {
-    public class DeleteManyCommand<T> : CommandBase<T> where T : class
+    public class DeleteManyCommand<T> : BaseCommand<T> where T : class
     {
         public DeleteManyCommand(IEnumerable<T> items)
         {

@@ -2,7 +2,7 @@
 
 namespace CommandQueryExample.Common.StandardCommands
 {
-    public class AddCommand<T> : CommandBase<T> where T : class
+    public class AddCommand<T> : BaseCommand<T> where T : class
     {
         public AddCommand(T item)
         {

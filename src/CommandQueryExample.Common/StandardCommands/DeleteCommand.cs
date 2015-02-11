@@ -2,7 +2,7 @@
 
 namespace CommandQueryExample.Common.StandardCommands
 {
-    public class DeleteCommand<T> : CommandBase<T> where T : class
+    public class DeleteCommand<T> : BaseCommand<T> where T : class
     {
         public DeleteCommand(T item)
         {

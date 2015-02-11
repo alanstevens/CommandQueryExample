@@ -44,9 +44,10 @@
   <ItemGroup>
     <Compile Include="BaseAsyncQuery.cs" />
     <Compile Include="BaseAsyncScalarQuery.cs" />
-    <Compile Include="CommandBase.cs" />
+    <Compile Include="BaseCommand.cs" />
     <Compile Include="BaseQuery.cs" />
     <Compile Include="BaseScalarQuery.cs" />
+    <Compile Include="Extensions\DispatcherExtensions.cs" />
     <Compile Include="StandardCommands\AddCommand.cs" />
     <Compile Include="StandardCommands\AddManyCommand.cs" />
     <Compile Include="StandardCommands\DeleteCommand.cs" />

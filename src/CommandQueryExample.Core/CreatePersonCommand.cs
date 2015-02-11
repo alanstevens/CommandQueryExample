@@ -4,7 +4,7 @@ using CommandQuerySample.Domain;
 
 namespace CommandQueryExample.Core
 {
-    public class CreatePersonCommand : CommandBase<Person>
+    public class CreatePersonCommand : BaseCommand<Person>
     {
         public CreatePersonCommand(string firstName, string lastName)
         {

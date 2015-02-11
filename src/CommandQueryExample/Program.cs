@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CommandQueryExample.Common;
+using CommandQueryExample.Common.Extensions;
 using CommandQueryExample.Common.StandardCommands;
 using CommandQueryExample.Core;
 using CommandQueryExample.Data;
@@ -27,9 +28,11 @@ namespace CommandQueryExample
 
                 var command = new AddCommand<Person>(new Person {FirstName = "Alan", LastName = "Turing"});
                 dispatcher.QueueCommand(command);
+
                 var mutableAlan = new Person {FirstName = "Alan", LastName = "Shepard"};
-                command = new AddCommand<Person>(mutableAlan);
-                dispatcher.QueueCommand(command);
+
+                dispatcher.Add(mutableAlan); // Using an IDispatcher extension method
+
                 context.SaveChanges();
 
                 PrintPeople(dispatcher.Get(query));
@@ -40,6 +43,7 @@ namespace CommandQueryExample
                 PrintPeople(dispatcher.Get(query));
 
                 dispatcher.QueueCommand(new DeleteCommand<Person>(mutableAlan));
+
                 context.SaveChanges();
 
                 PrintPeople(dispatcher.Get(query));

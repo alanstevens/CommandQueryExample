@@ -3,12 +3,9 @@ using System.Linq;
 
 namespace CommandQueryExample.Common
 {
-    public abstract class CommandBase<T>
+    public abstract class BaseCommand<T>
     {
-        // ReSharper disable FieldCanBeMadeReadOnly.Local
-        // ReSharper restore FieldCanBeMadeReadOnly.Local
-
-        protected CommandBase()
+        protected BaseCommand()
         {
             MarkAsModified = x => x;
             MarkAsAdded = x => x;

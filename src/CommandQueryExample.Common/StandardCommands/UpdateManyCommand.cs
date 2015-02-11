@@ -2,7 +2,7 @@
 
 namespace CommandQueryExample.Common.StandardCommands
 {
-    public class UpdateManyCommand<T> : CommandBase<T> where T : class
+    public class UpdateManyCommand<T> : BaseCommand<T> where T : class
     {
         public UpdateManyCommand(IEnumerable<T> items)
         {

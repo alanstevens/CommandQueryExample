@@ -3,7 +3,7 @@ using CommandQueryExample.Common.Extensions;
 
 namespace CommandQueryExample.Common.StandardCommands
 {
-    public class AddManyCommand<T> : CommandBase<T> where T : class
+    public class AddManyCommand<T> : BaseCommand<T> where T : class
     {
         public AddManyCommand(IEnumerable<T> items)
         {

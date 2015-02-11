@@ -13,6 +13,6 @@ namespace CommandQueryExample.Common
 
         Task<T> GetScalarAsync<T>(BaseAsyncScalarQuery<T> query) where T : class;
 
-        void QueueCommand<T>(CommandBase<T> command) where T : class;
+        void QueueCommand<T>(BaseCommand<T> command) where T : class;
     }
 }

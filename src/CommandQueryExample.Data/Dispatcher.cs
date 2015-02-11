@@ -36,7 +36,7 @@ namespace CommandQueryExample.Data
             return await query.CallAsync(Context.Set<T>());
         }
 
-        public void QueueCommand<T>(CommandBase<T> command) where T : class
+        public void QueueCommand<T>(BaseCommand<T> command) where T : class
         {
             command.MarkAsModified = MarkAsModified;
             command.MarkAsAdded = MarkAsAdded;
