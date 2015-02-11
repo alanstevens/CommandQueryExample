@@ -10,6 +10,7 @@ using CommandQueryExample.Common.Extensions;
 
 namespace CommandQueryExample.Data
 {
+    // ReSharper disable InvokeAsExtensionMethod
     public class QueryExtensionsUtil : IQueryExtensionsUtil
     {
         public void OnStartup()
@@ -342,16 +343,6 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.ToListAsync(collection, cancellationToken);
         }
 
-        //public async Task AverageAsync<T>(IQueryable<T> collection, T source)
-        //{
-        //    return await QueryableExtensions.AverageAsync(collection, source);
-        //    }
-
-        //public void Test2<T>(IQueryable<T> collection, T source)
-        //{
-        //    QueryableExtensions.SumAsync(collection);
-        //}
-
         static DbSet<T> GetSet<T>(IEnumerable<T> collection) where T : class
         {
             var set = collection as DbSet<T>;
@@ -359,4 +350,5 @@ namespace CommandQueryExample.Data
             return set;
         }
     }
+    // ReSharper restore InvokeAsExtensionMethod
 }

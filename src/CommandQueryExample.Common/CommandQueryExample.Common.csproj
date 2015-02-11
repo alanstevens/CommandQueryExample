@@ -47,7 +47,11 @@
     <Compile Include="BaseCommand.cs" />
     <Compile Include="BaseQuery.cs" />
     <Compile Include="BaseScalarQuery.cs" />
+    <Compile Include="Extensions\AverageAsyncExtensions.cs" />
     <Compile Include="Extensions\DispatcherExtensions.cs" />
+    <Compile Include="Extensions\SumAsyncExtensions.cs" />
+    <Compile Include="IAverageAsyncExtensionsUtil.cs" />
+    <Compile Include="ISumAsyncExtensionsUtil.cs" />
     <Compile Include="StandardCommands\AddCommand.cs" />
     <Compile Include="StandardCommands\AddManyCommand.cs" />
     <Compile Include="StandardCommands\DeleteCommand.cs" />

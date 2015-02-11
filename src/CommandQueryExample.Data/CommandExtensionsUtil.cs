@@ -6,7 +6,7 @@ using CommandQueryExample.Common.Extensions;
 
 namespace CommandQueryExample.Data
 {
-    public class CommandExtensionsUtil : ICommandExtensionsUtil, IStartupTask
+    public class CommandExtensionsUtil : ICommandExtensionsUtil
     {
         public T Add<T>(IQueryable<T> collection, T item) where T : class
         {

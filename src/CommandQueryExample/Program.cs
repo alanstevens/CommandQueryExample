@@ -16,6 +16,8 @@ namespace CommandQueryExample
             // These tasks are usually handled by my IoC bootstrapper
             new QueryExtensionsUtil().OnStartup();
             new CommandExtensionsUtil().OnStartup();
+            new SumAsyncExtensionsUtil().OnStartup();
+            new AverageAsyncExtensionsUtil().OnStartup();
             new DataContextFactoryStartupTask().OnStartup();
 
             // this would normally be injected on the constructor

@@ -23,7 +23,6 @@ simple.
 
 ## TODO:
 - **Write tests!**
-- Implement the rest of the async methods on DbSet
 - Paging
 - Logging
 - Event hooks?

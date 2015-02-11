@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AverageAsyncExtensionsUtil.cs" />
     <Compile Include="CommandExtensionsUtil.cs" />
     <Compile Include="ContextInitializer.cs" />
     <Compile Include="DataContext.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dispatcher.cs" />
     <Compile Include="SampleContext.cs" />
+    <Compile Include="SumAsyncExtensionsUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

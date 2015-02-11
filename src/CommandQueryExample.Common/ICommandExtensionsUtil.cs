@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CommandQueryExample.Common
 {
-    public interface ICommandExtensionsUtil
+    public interface ICommandExtensionsUtil : IStartupTask
     {
         T Add<T>(IQueryable<T> collection, T item) where T : class;
 
