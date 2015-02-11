@@ -44,7 +44,7 @@ namespace CommandQueryExample
 
                 PrintPeople(dispatcher.Get(query));
 
-                dispatcher.QueueCommand(new DeleteCommand<Person>(mutableAlan));
+                dispatcher.QueueCommand(new RemoveCommand<Person>(mutableAlan));
 
                 context.SaveChanges();
 

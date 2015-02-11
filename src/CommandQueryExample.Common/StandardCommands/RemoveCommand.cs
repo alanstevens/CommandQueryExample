@@ -2,24 +2,24 @@
 
 namespace CommandQueryExample.Common.StandardCommands
 {
-    public class DeleteCommand<T> : BaseCommand<T> where T : class
+    public class RemoveCommand<T> : BaseCommand<T> where T : class
     {
-        public DeleteCommand(T item)
+        public RemoveCommand(T item)
         {
             _action = s =>
             {
-                s.Delete(item);
+                s.Remove(item);
                 MarkAsDeleted(item);
             };
         }
 
-        public DeleteCommand(object key)
+        public RemoveCommand(object key)
         {
             _action = s =>
             {
                 var item = s.Find(key);
                 Verify.NotNull(item, "item");
-                s.Delete(item);
+                s.Remove(item);
                 MarkAsDeleted(item);
             };
         }

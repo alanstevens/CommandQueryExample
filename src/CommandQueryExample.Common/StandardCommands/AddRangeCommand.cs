@@ -3,15 +3,15 @@ using CommandQueryExample.Common.Extensions;
 
 namespace CommandQueryExample.Common.StandardCommands
 {
-    public class DeleteManyCommand<T> : BaseCommand<T> where T : class
+    public class AddRangeCommand<T> : BaseCommand<T> where T : class
     {
-        public DeleteManyCommand(IEnumerable<T> items)
+        public AddRangeCommand(IEnumerable<T> items)
         {
             _action = s =>
             {
-                s.DeleteMany(items);
+                s.AddRange(items);
                 foreach (var item in items)
-                    MarkAsDeleted(item);
+                    MarkAsAdded(item);
             };
         }
     }

@@ -12,19 +12,19 @@ namespace CommandQueryExample.Common.Extensions
             return Util.Add(collection, item);
         }
 
-        public static IEnumerable<T> AddMany<T>(this IQueryable<T> collection, IEnumerable<T> items) where T : class
+        public static IEnumerable<T> AddRange<T>(this IQueryable<T> collection, IEnumerable<T> items) where T : class
         {
-            return Util.AddMany(collection, items);
+            return Util.AddRange(collection, items);
         }
 
-        public static T Delete<T>(this IQueryable<T> collection, T item) where T : class
+        public static T Remove<T>(this IQueryable<T> collection, T item) where T : class
         {
-            return Util.Delete(collection, item);
+            return Util.Remove(collection, item);
         }
 
-        public static IEnumerable<T> DeleteMany<T>(this IQueryable<T> collection, IEnumerable<T> items) where T : class
+        public static IEnumerable<T> RemoveRange<T>(this IQueryable<T> collection, IEnumerable<T> items) where T : class
         {
-            return Util.DeleteMany(collection, items);
+            return Util.RemoveRange(collection, items);
         }
     }
 }

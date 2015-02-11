@@ -23,7 +23,6 @@ simple.
 
 ## TODO:
 - **Write tests!**
-- Paging
 - Logging
 - Event hooks?
 

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace CommandQueryExample.Common.Extensions
 {
-    // TODO: HAS 02/10/2015 Wrap AverageAsync and SumAsync overloads.
     public static class QueryExtensions
     {
         public static IQueryExtensionsUtil Util { get; set; }

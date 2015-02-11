@@ -13,17 +13,17 @@ namespace CommandQueryExample.Data
             return GetSet(collection).Add(item);
         }
 
-        public IEnumerable<T> AddMany<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class
+        public IEnumerable<T> AddRange<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class
         {
             return GetSet(collection).AddRange(items);
         }
 
-        public T Delete<T>(IQueryable<T> collection, T item) where T : class
+        public T Remove<T>(IQueryable<T> collection, T item) where T : class
         {
             return GetSet(collection).Remove(item);
         }
 
-        public IEnumerable<T> DeleteMany<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class
+        public IEnumerable<T> RemoveRange<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class
         {
             return GetSet(collection).RemoveRange(items);
         }

@@ -53,11 +53,11 @@
     <Compile Include="IAverageAsyncExtensionsUtil.cs" />
     <Compile Include="ISumAsyncExtensionsUtil.cs" />
     <Compile Include="StandardCommands\AddCommand.cs" />
-    <Compile Include="StandardCommands\AddManyCommand.cs" />
-    <Compile Include="StandardCommands\DeleteCommand.cs" />
-    <Compile Include="StandardCommands\DeleteManyCommand.cs" />
+    <Compile Include="StandardCommands\AddRangeCommand.cs" />
+    <Compile Include="StandardCommands\RemoveCommand.cs" />
+    <Compile Include="StandardCommands\RemoveRangeCommand.cs" />
     <Compile Include="StandardCommands\UpdateCommand.cs" />
-    <Compile Include="StandardCommands\UpdateManyCommand.cs" />
+    <Compile Include="StandardCommands\UpdateRangeCommand.cs" />
     <Compile Include="DataContextFactory.cs" />
     <Compile Include="DisposableBase.cs" />
     <Compile Include="Extensions\CommandExtensions.cs" />

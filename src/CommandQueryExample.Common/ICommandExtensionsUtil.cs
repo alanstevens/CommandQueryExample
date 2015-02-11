@@ -7,10 +7,10 @@ namespace CommandQueryExample.Common
     {
         T Add<T>(IQueryable<T> collection, T item) where T : class;
 
-        IEnumerable<T> AddMany<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class;
+        IEnumerable<T> AddRange<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class;
 
-        T Delete<T>(IQueryable<T> collection, T item) where T : class;
+        T Remove<T>(IQueryable<T> collection, T item) where T : class;
 
-        IEnumerable<T> DeleteMany<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class;
+        IEnumerable<T> RemoveRange<T>(IQueryable<T> collection, IEnumerable<T> items) where T : class;
     }
 }

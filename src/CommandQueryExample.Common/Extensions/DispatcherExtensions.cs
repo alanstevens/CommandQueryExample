@@ -5,14 +5,14 @@ namespace CommandQueryExample.Common.Extensions
 {
     public static class DispatcherExtensions
     {
-        public static void Delete<T>(this IDispatcher dispatcher, T item) where T : class 
+        public static void Remove<T>(this IDispatcher dispatcher, T item) where T : class 
         {
-            dispatcher.QueueCommand(new DeleteCommand<T>(item));
+            dispatcher.QueueCommand(new RemoveCommand<T>(item));
         }
 
-        public static void Delete<T>(this IDispatcher dispatcher, IEnumerable<T> items) where T : class 
+        public static void RemoveRange<T>(this IDispatcher dispatcher, IEnumerable<T> items) where T : class 
         {
-            dispatcher.QueueCommand(new DeleteManyCommand<T>(items));
+            dispatcher.QueueCommand(new RemoveRangeCommand<T>(items));
         }
 
         public static void Add<T>(this IDispatcher dispatcher, T item) where T : class
@@ -20,9 +20,9 @@ namespace CommandQueryExample.Common.Extensions
             dispatcher.QueueCommand(new AddCommand<T>(item));
         }
 
-        public static void Add<T>(this IDispatcher dispatcher, IEnumerable<T> items) where T : class
+        public static void AddRange<T>(this IDispatcher dispatcher, IEnumerable<T> items) where T : class
         {
-            dispatcher.QueueCommand(new AddManyCommand<T>(items));
+            dispatcher.QueueCommand(new AddRangeCommand<T>(items));
         }
 
         public static void Update<T>(this IDispatcher dispatcher, T item) where T : class
@@ -30,9 +30,9 @@ namespace CommandQueryExample.Common.Extensions
             dispatcher.QueueCommand(new UpdateCommand<T>(item));
         }
 
-        public static void Update<T>(this IDispatcher dispatcher, IEnumerable<T> items) where T : class
+        public static void UpdateRange<T>(this IDispatcher dispatcher, IEnumerable<T> items) where T : class
         {
-            dispatcher.QueueCommand(new UpdateManyCommand<T>(items));
+            dispatcher.QueueCommand(new UpdateRangeCommand<T>(items));
         }
     }
 }
