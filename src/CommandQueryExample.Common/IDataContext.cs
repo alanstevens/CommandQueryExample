@@ -7,10 +7,10 @@ namespace CommandQueryExample.Common
     {
         bool IsDisposed { get; }
 
-        void SaveChanges();
+        int SaveChanges();
 
         Task<int> SaveChangesAsync();
 
-        void SaveChangesWithTransaction();
+        int SaveChangesWithTransaction();
     }
 }

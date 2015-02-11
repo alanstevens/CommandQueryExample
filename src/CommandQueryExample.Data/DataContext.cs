@@ -15,11 +15,11 @@ namespace CommandQueryExample.Data
 
         public DbContext Context { get; private set; }
 
-        public void SaveChanges()
+        public int SaveChanges()
         {
             ValidateContext();
 
-            Context.SaveChanges();
+            return Context.SaveChanges();
         }
 
         public async Task<int> SaveChangesAsync()
@@ -29,15 +29,16 @@ namespace CommandQueryExample.Data
             return await Context.SaveChangesAsync();
         }
 
-        public void SaveChangesWithTransaction()
+        public int SaveChangesWithTransaction()
         {
             ValidateContext();
 
             using (var transaction = Context.Database.BeginTransaction())
             {
+                int result;
                 try
                 {
-                    Context.SaveChanges();
+                    result = Context.SaveChanges();
                     transaction.Commit();
                 }
                 catch
@@ -45,6 +46,7 @@ namespace CommandQueryExample.Data
                     transaction.Rollback();
                     throw;
                 }
+                return result;
             }
         }
 
