@@ -271,6 +271,12 @@ namespace CommandQueryExample.Common.Extensions
             return Util.Skip(collection, countAccesor);
         }
 
+
+        public static IEnumerable<T> SqlQuery<T>(this IQueryable<T> collection, string sql, params object[] parameters) where T : class
+        {
+            return Util.SqlQuery(collection, sql, parameters);
+        }
+
         public static IQueryable<T> Take<T>(this IQueryable<T> collection, Expression<Func<int>> countAccesor) where T : class
         {
             return Util.Take(collection, countAccesor);

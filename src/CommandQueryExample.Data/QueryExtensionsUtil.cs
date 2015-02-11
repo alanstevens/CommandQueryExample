@@ -278,6 +278,11 @@ namespace CommandQueryExample.Data
             return QueryableExtensions.Skip(collection, countAccessor);
         }
 
+        public IEnumerable<T> SqlQuery<T>(IQueryable<T> collection, string sql, params object[] parameters) where T : class
+        {
+            return GetSet(collection).SqlQuery(sql, parameters);
+        }
+
         public IQueryable<T> Take<T>(IQueryable<T> collection, Expression<Func<int>> countAccessor) where T : class
         {
             return QueryableExtensions.Take(collection, countAccessor);
