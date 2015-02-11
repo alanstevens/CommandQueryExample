@@ -9,8 +9,6 @@ namespace CommandQueryExample.Common
 {
     public interface IQueryExtensionsUtil : IStartupTask
     {
-        void OnStartup();
-
         Task<bool> AllAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class;
 
         Task<bool> AllAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
@@ -36,12 +34,6 @@ namespace CommandQueryExample.Common
         Task<int> CountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector) where T : class;
 
         Task<int> CountAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
-
-        T Find<T>(IQueryable<T> collection, params object[] keyValues) where T : class;
-
-        Task<T> FindAsync<T>(IQueryable<T> collection, params object[] keyValues) where T : class;
-
-        Task<T> FindAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken, params object[] keyValues) where T : class;
 
         Task<T> FirstAsync<T>(IQueryable<T> collection) where T : class;
 
@@ -114,8 +106,6 @@ namespace CommandQueryExample.Common
         Task<T> SingleOrDefaultAsync<T>(IQueryable<T> collection, Expression<Func<T, bool>> selector, CancellationToken cancellationToken) where T : class;
 
         IQueryable<T> Skip<T>(IQueryable<T> collection, Expression<Func<int>> countAccessor) where T : class;
-
-        IEnumerable<T> SqlQuery<T>(IQueryable<T> collection, string sql, params object[] parameters) where T : class;
 
         IQueryable<T> Take<T>(IQueryable<T> collection, Expression<Func<int>> countAccessor) where T : class;
 

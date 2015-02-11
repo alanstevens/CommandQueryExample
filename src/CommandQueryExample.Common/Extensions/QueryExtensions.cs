@@ -76,21 +76,6 @@ namespace CommandQueryExample.Common.Extensions
             return await Util.CountAsync(collection, where, cancellationToken);
         }
 
-        public static T Find<T>(this IQueryable<T> collection, params object[] keyValues) where T : class
-        {
-            return Util.Find(collection, keyValues);
-        }
-
-        public static async Task<T> FindAsync<T>(this IQueryable<T> collection, params object[] keyValues) where T : class
-        {
-            return await Util.FindAsync(collection, keyValues);
-        }
-
-        public static async Task<T> FindAsync<T>(this IQueryable<T> collection, CancellationToken cancellationToken, params object[] keyValues) where T : class
-        {
-            return await Util.FindAsync(collection, cancellationToken, keyValues);
-        }
-
         public static async Task<T> FirstAsync<T>(this IQueryable<T> collection) where T : class
         {
             return await Util.FirstAsync(collection);
@@ -269,12 +254,6 @@ namespace CommandQueryExample.Common.Extensions
         public static IQueryable<T> Skip<T>(this IQueryable<T> collection, Expression<Func<int>> countAccesor) where T : class
         {
             return Util.Skip(collection, countAccesor);
-        }
-
-
-        public static IEnumerable<T> SqlQuery<T>(this IQueryable<T> collection, string sql, params object[] parameters) where T : class
-        {
-            return Util.SqlQuery(collection, sql, parameters);
         }
 
         public static IQueryable<T> Take<T>(this IQueryable<T> collection, Expression<Func<int>> countAccesor) where T : class

@@ -83,21 +83,6 @@ namespace CommandQueryExample.Data
             return await QueryableExtensions.CountAsync(collection, selector, cancellationToken);
         }
 
-        public T Find<T>(IQueryable<T> collection, params object[] keyValues) where T : class
-        {
-            return GetSet(collection).Find(keyValues);
-        }
-
-        public async Task<T> FindAsync<T>(IQueryable<T> collection, params object[] keyValues) where T : class
-        {
-            return await GetSet(collection).FindAsync(keyValues);
-        }
-
-        public async Task<T> FindAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken, params object[] keyValues) where T : class
-        {
-            return await GetSet(collection).FindAsync(cancellationToken, keyValues);
-        }
-
         public async Task<T> FirstAsync<T>(IQueryable<T> collection) where T : class
         {
             return await QueryableExtensions.FirstAsync(collection);
@@ -278,11 +263,6 @@ namespace CommandQueryExample.Data
             return QueryableExtensions.Skip(collection, countAccessor);
         }
 
-        public IEnumerable<T> SqlQuery<T>(IQueryable<T> collection, string sql, params object[] parameters) where T : class
-        {
-            return GetSet(collection).SqlQuery(sql, parameters);
-        }
-
         public IQueryable<T> Take<T>(IQueryable<T> collection, Expression<Func<int>> countAccessor) where T : class
         {
             return QueryableExtensions.Take(collection, countAccessor);
@@ -346,13 +326,6 @@ namespace CommandQueryExample.Data
         public async Task<IEnumerable<T>> ToListAsync<T>(IQueryable<T> collection, CancellationToken cancellationToken) where T : class
         {
             return await QueryableExtensions.ToListAsync(collection, cancellationToken);
-        }
-
-        static DbSet<T> GetSet<T>(IEnumerable<T> collection) where T : class
-        {
-            var set = collection as DbSet<T>;
-            Verify.NotNull(set, "set");
-            return set;
         }
     }
     // ReSharper restore InvokeAsExtensionMethod

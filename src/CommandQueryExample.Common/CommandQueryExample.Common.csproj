@@ -48,9 +48,11 @@
     <Compile Include="BaseQuery.cs" />
     <Compile Include="BaseScalarQuery.cs" />
     <Compile Include="Extensions\AverageAsyncExtensions.cs" />
+    <Compile Include="Extensions\DbSetExtensions.cs" />
     <Compile Include="Extensions\DispatcherExtensions.cs" />
     <Compile Include="Extensions\SumAsyncExtensions.cs" />
     <Compile Include="IAverageAsyncExtensionsUtil.cs" />
+    <Compile Include="IDbSetExtensionsUtil.cs" />
     <Compile Include="ISumAsyncExtensionsUtil.cs" />
     <Compile Include="StandardCommands\AddCommand.cs" />
     <Compile Include="StandardCommands\AddRangeCommand.cs" />
@@ -60,8 +62,6 @@
     <Compile Include="StandardCommands\UpdateRangeCommand.cs" />
     <Compile Include="DataContextFactory.cs" />
     <Compile Include="DisposableBase.cs" />
-    <Compile Include="Extensions\CommandExtensions.cs" />
-    <Compile Include="ICommandExtensionsUtil.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="StandardQueries\Async\GetAllAsyncQuery.cs" />
     <Compile Include="StandardQueries\Async\SingleAsyncQuery.cs" />

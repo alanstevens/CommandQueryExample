@@ -47,10 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AverageAsyncExtensionsUtil.cs" />
-    <Compile Include="CommandExtensionsUtil.cs" />
     <Compile Include="ContextInitializer.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="DataContextFactoryStartupTask.cs" />
+    <Compile Include="DbSetExtensionsUtil.cs" />
     <Compile Include="QueryExtensionsUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dispatcher.cs" />
