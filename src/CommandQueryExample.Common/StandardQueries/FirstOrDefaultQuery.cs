@@ -7,14 +7,14 @@ namespace CommandQueryExample.Common.StandardQueries
 {
     public class FirstOrDefaultQuery<T> : BaseScalarQuery<T> where T : class
     {
-        public FirstOrDefaultQuery(Expression<Func<T, bool>> where = null)
+        public FirstOrDefaultQuery(Expression<Func<T, bool>> selector = null)
         {
-            if (where.IsNull())
+            if (selector.IsNull())
             {
                 _query = s => s.FirstOrDefault();
                 return;
             }
-            _query = s => s.FirstOrDefault(where);
+            _query = s => s.FirstOrDefault(selector);
         }
     }
 }

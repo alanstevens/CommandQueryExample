@@ -6,9 +6,11 @@ namespace CommandQueryExample.Common.StandardQueries.Async
 {
     public class SingleOrDefaultAsyncQuery<T> : BaseAsyncScalarQuery<T> where T : class
     {
-        public SingleOrDefaultAsyncQuery(Expression<Func<T, bool>> where)
+        public SingleOrDefaultAsyncQuery(Expression<Func<T, bool>> selector = null)
         {
-            _query = s => s.SingleOrDefaultAsync(where);
+            if (selector.IsNull())
+                _query = s => s.SingleOrDefaultAsync();
+            _query = s => s.SingleOrDefaultAsync(selector);
         }
     }
 }

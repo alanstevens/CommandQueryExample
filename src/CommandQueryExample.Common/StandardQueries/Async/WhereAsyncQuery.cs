@@ -7,9 +7,9 @@ namespace CommandQueryExample.Common.StandardQueries.Async
 {
     public class WhereAsyncQuery<T> : BaseAsyncQuery<T> where T : class
     {
-        public WhereAsyncQuery(Expression<Func<T, bool>> where)
+        public WhereAsyncQuery(Expression<Func<T, bool>> selector)
         {
-            _query = s => s.Where(where).ToListAsync();
+            _query = s => s.Where(selector).ToListAsync();
         }
     }
 }
