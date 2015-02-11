@@ -16,7 +16,7 @@ namespace CommandQueryExample
             // These tasks are usually handled by my IoC bootstrapper
             new QueryExtensionsUtil().OnStartup();
             new CommandExtensionsUtil().OnStartup();
-            DataContextFactory.CreateDataContext = () => new DataContext(new SampleContext());
+            new DataContextFactoryStartupTask().OnStartup();
 
             // this would normally be injected on the constructor
             IDispatcher dispatcher = new Dispatcher();
