@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Threading;
 using System.Threading.Tasks;
 using CommandQueryExample.Common;
 using CommandQueryExample.Common.Extensions;
@@ -27,6 +28,13 @@ namespace CommandQueryExample.Data
             ValidateContext();
 
             return await Context.SaveChangesAsync();
+        }
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            ValidateContext();
+
+            return await Context.SaveChangesAsync(cancellationToken);
         }
 
         public int SaveChangesWithTransaction()
@@ -61,7 +69,7 @@ namespace CommandQueryExample.Data
 
         void ValidateContext()
         {
-            if (IsDisposed) throw new Exception("DbContext has been disposed.");
+            if (IsDisposed) throw new ObjectDisposedException("DbContext has been disposed.");
             if (Context.IsNull()) throw new NullReferenceException("DbContext is null.");
         }
     }

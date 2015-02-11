@@ -13,11 +13,11 @@ namespace CommandQueryExample.Common.StandardCommands
             };
         }
 
-        public RemoveCommand(object key)
+        public RemoveCommand(params object[] keyValues)
         {
             _action = s =>
             {
-                var item = s.Find(key);
+                var item = s.Find(keyValues);
                 Verify.NotNull(item, "item");
                 s.Remove(item);
                 MarkAsDeleted(item);

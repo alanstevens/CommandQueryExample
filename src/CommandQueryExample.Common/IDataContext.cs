@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CommandQueryExample.Common
@@ -10,6 +11,8 @@ namespace CommandQueryExample.Common
         int SaveChanges();
 
         Task<int> SaveChangesAsync();
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
         int SaveChangesWithTransaction();
     }

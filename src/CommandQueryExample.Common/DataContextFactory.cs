@@ -19,7 +19,7 @@ namespace CommandQueryExample.Common
                 lock (_lock)
                 {
                     if (_currentContext.IsNull()) throw new NullReferenceException("CurrentContext is null.");
-                    if (_currentContext.IsDisposed) throw new Exception("CurrentContext has been disposed.");
+                    if (_currentContext.IsDisposed) throw new ObjectDisposedException("CurrentContext has been disposed.");
                     return _currentContext;
                 }
             }
@@ -28,7 +28,7 @@ namespace CommandQueryExample.Common
                 lock (_lock)
                 {
                     if (_currentContext.IsNotNull() && !_currentContext.IsDisposed)
-                        throw new Exception("CurrentContext has not been disposed.");
+                        throw new InvalidOperationException("CurrentContext has not been disposed.");
                     _currentContext = value;
                 }
             }
@@ -41,9 +41,9 @@ namespace CommandQueryExample.Common
                 lock (_lock)
                 {
                     if (_createDataContext.IsNull())
-                        throw new NullReferenceException("DataContextFactory CreateDataContext is not properly configured.");
+                        throw new NullReferenceException("DataContextFactory.CreateDataContext is not properly configured.");
                     if (_currentContext.IsNotNull() && !_currentContext.IsDisposed)
-                        throw new Exception("CurrentContext has not been disposed.");
+                        throw new InvalidOperationException("CurrentContext has not been disposed.");
                     return _createDataContext;
                 }
             }

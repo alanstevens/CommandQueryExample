@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
 using CommandQueryExample.Common;
 
@@ -51,28 +52,36 @@ namespace CommandQueryExample.Data
 
         static T MarkAsModified<T>(T entity) where T : class
         {
-            AttachIfNeeded(entity);
-            Context.Entry(entity).State = EntityState.Modified;
+            var entry = GetEntry(entity);
+            AttachIfNeeded(entry);
+            entry.State = EntityState.Modified;
             return entity;
         }
 
         static T MarkAsAdded<T>(T entity) where T : class
         {
-            AttachIfNeeded(entity);
-            Context.Entry(entity).State = EntityState.Added;
+            var entry = GetEntry(entity);
+            AttachIfNeeded(entry);
+            entry.State = EntityState.Added;
             return entity;
         }
 
         static void MarkAsDeleted<T>(T entity) where T : class
         {
-            AttachIfNeeded(entity);
-            Context.Entry(entity).State = EntityState.Deleted;
+            var entry = GetEntry(entity);
+            AttachIfNeeded(entry);
+            entry.State = EntityState.Deleted;
         }
 
-        static void AttachIfNeeded<T>(T entity) where T : class
+        static DbEntityEntry<T> GetEntry<T>(T entity) where T : class
         {
-            if (Context.Entry(entity).State == EntityState.Detached)
-                Context.Set<T>().Attach(entity);
+            return Context.Entry(entity);
+        }
+
+        static void AttachIfNeeded<T>(DbEntityEntry<T> entry) where T : class
+        {
+            if (entry.State == EntityState.Detached)
+                Context.Set<T>().Attach(entry.Entity);
         }
     }
 }
