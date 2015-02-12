@@ -8,7 +8,7 @@ namespace CommandQueryExample.Common
         // TODO: HAS 02/09/2015 Handle multiple data context classes.
         static Func<IDataContext> _createDataContext;
 
-        static Lazy<IDataContext> _currentContext;
+        static WeakReference<IDataContext> _currentContext;
 
         static readonly object _lock = new object();
 
@@ -19,18 +19,27 @@ namespace CommandQueryExample.Common
                 lock (_lock)
                 {
                     if (_currentContext.IsNull()) throw new NullReferenceException("CurrentContext is null.");
-                    if (_currentContext.Value.IsNull()) throw new NullReferenceException("CurrentContext is null.");
-                    if (_currentContext.Value.IsDisposed) throw new ObjectDisposedException("CurrentContext has been disposed.");
-                    return _currentContext.Value;
+                    IDataContext context;
+                    _currentContext.TryGetTarget(out context);
+                    if (context.IsNull()) throw new NullReferenceException("CurrentContext is null.");
+                    if (context.IsDisposed) throw new ObjectDisposedException("CurrentContext has been disposed.");
+                    return context;
                 }
             }
             private set
             {
                 lock (_lock)
                 {
-                    if (_currentContext.IsNotNull() &&_currentContext.Value.IsNotNull() && !_currentContext.Value.IsDisposed)
-                        throw new InvalidOperationException("CurrentContext has not been disposed.");
-                    _currentContext = new Lazy<IDataContext>(() => value);
+                    if(_currentContext.IsNotNull())
+                    {
+                        IDataContext context;
+                        _currentContext.TryGetTarget(out context);
+                        
+                        if (_currentContext.IsNotNull() && context.IsNotNull() && !context.IsDisposed)
+                            throw new InvalidOperationException("CurrentContext has not been disposed.");
+                        
+                    }
+                    _currentContext = new WeakReference<IDataContext>(value);
                 }
             }
         }
@@ -43,8 +52,16 @@ namespace CommandQueryExample.Common
                 {
                     if (_createDataContext.IsNull())
                         throw new NullReferenceException("DataContextFactory.CreateDataContext is not properly configured.");
-                    if (_currentContext.IsNotNull() && !_currentContext.Value.IsDisposed)
-                        throw new InvalidOperationException("CurrentContext has not been disposed.");
+
+                    if (_currentContext.IsNotNull())
+                    {
+                        IDataContext context;
+                        _currentContext.TryGetTarget(out context);
+                        
+                        if (context.IsNotNull() && !context.IsDisposed)
+                            throw new InvalidOperationException("CurrentContext has not been disposed.");
+                        
+                    }
                     return _createDataContext;
                 }
             }

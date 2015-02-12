@@ -9,12 +9,28 @@ namespace CommandQueryExample.Data
 {
     public class DataContext : DisposableBase, IDataContext
     {
+        readonly WeakReference<DbContext> _context;
+
         public DataContext(DbContext context)
         {
-            Context = context;
+            _context = new WeakReference<DbContext>(context); 
         }
 
-        public DbContext Context { get; private set; }
+        public DbContext Context
+        {
+            get
+            {
+                if (IsDisposed) throw new ObjectDisposedException("DbContext has been disposed.");
+                if (_context.IsNull()) throw new NullReferenceException("dbContext is null.");
+
+                DbContext dbContext;
+                _context.TryGetTarget(out dbContext);
+
+                if (dbContext.IsNull()) throw new NullReferenceException("dbContext is null.");
+
+                return dbContext;
+            }
+        }
 
         public int SaveChanges()
         {
@@ -64,13 +80,22 @@ namespace CommandQueryExample.Data
 
             ValidateContext();
 
-            Context.Dispose();
+            if (_context.IsNull()) return;
+
+            DbContext dbContext;
+            _context.TryGetTarget(out dbContext);
+
+            if(dbContext.IsNotNull()) 
+                dbContext.Dispose();
         }
 
         void ValidateContext()
         {
             if (IsDisposed) throw new ObjectDisposedException("DbContext has been disposed.");
-            if (Context.IsNull()) throw new NullReferenceException("DbContext is null.");
+            if (_context.IsNull()) throw new NullReferenceException("DbContext is null.");
+            DbContext dbContext;
+            _context.TryGetTarget(out dbContext);
+            if (dbContext.IsNull()) throw new NullReferenceException("DbContext is null.");
         }
     }
 }
