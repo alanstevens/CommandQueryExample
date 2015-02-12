@@ -9,12 +9,14 @@ namespace CommandQueryExample.Data
 {
     public class DataContext : DisposableBase, IDataContext
     {
-        readonly WeakReference<DbContext> _context;
-
-        public DataContext(DbContext context)
+        public DataContext(DbContext context, bool useTransaction = false)
         {
-            _context = new WeakReference<DbContext>(context); 
+            _context = new WeakReference<DbContext>(context);
+            if (useTransaction) _transaction = new WeakReference<DbContextTransaction>(context.Database.BeginTransaction());
         }
+
+        readonly WeakReference<DbContext> _context;
+        readonly WeakReference<DbContextTransaction> _transaction;
 
         public DbContext Context
         {
@@ -34,35 +36,40 @@ namespace CommandQueryExample.Data
 
         public int SaveChanges()
         {
-            ValidateContext();
+            var dbContext = ValidateContext();
 
-            return Context.SaveChanges();
+            return dbContext.SaveChanges();
         }
 
         public async Task<int> SaveChangesAsync()
         {
-            ValidateContext();
+            var dbContext = ValidateContext();
 
-            return await Context.SaveChangesAsync();
+            return await dbContext.SaveChangesAsync();
         }
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
-            ValidateContext();
+            var dbContext = ValidateContext();
 
-            return await Context.SaveChangesAsync(cancellationToken);
+            return await dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public int SaveChangesWithTransaction()
+        protected override void OnDisposing(bool disposing)
         {
-            ValidateContext();
+            if (!disposing) return;
 
-            using (var transaction = Context.Database.BeginTransaction())
+            var dbContext = ValidateContext();
+
+            DbContextTransaction transaction = null;
+
+            if (_transaction.IsNotNull())
+                _transaction.TryGetTarget(out transaction);
+
+            if (transaction.IsNotNull())
             {
-                int result;
                 try
                 {
-                    result = Context.SaveChanges();
                     transaction.Commit();
                 }
                 catch
@@ -70,32 +77,20 @@ namespace CommandQueryExample.Data
                     transaction.Rollback();
                     throw;
                 }
-                return result;
+                transaction.Dispose();
             }
+
+            dbContext.Dispose();
         }
 
-        protected override void OnDisposing(bool disposing)
-        {
-            if (!disposing) return;
-
-            ValidateContext();
-
-            if (_context.IsNull()) return;
-
-            DbContext dbContext;
-            _context.TryGetTarget(out dbContext);
-
-            if(dbContext.IsNotNull()) 
-                dbContext.Dispose();
-        }
-
-        void ValidateContext()
+        DbContext ValidateContext()
         {
             if (IsDisposed) throw new ObjectDisposedException("DbContext has been disposed.");
             if (_context.IsNull()) throw new NullReferenceException("DbContext is null.");
             DbContext dbContext;
             _context.TryGetTarget(out dbContext);
             if (dbContext.IsNull()) throw new NullReferenceException("DbContext is null.");
+            return dbContext;
         }
     }
 }

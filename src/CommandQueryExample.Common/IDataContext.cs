@@ -13,7 +13,5 @@ namespace CommandQueryExample.Common
         Task<int> SaveChangesAsync();
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-
-        int SaveChangesWithTransaction();
     }
 }

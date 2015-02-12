@@ -6,7 +6,7 @@ namespace CommandQueryExample.Data
     {
         public void OnStartup()
         {
-            DataContextFactory.CreateDataContext = () => new DataContext(new SampleContext());
+            DataContextFactory.DataContextInitializer = useTransaction => new DataContext(new SampleContext(), useTransaction);
         }
     }
 }

@@ -54,6 +54,7 @@
     <Compile Include="IAverageAsyncExtensionsUtil.cs" />
     <Compile Include="IDbSetExtensionsUtil.cs" />
     <Compile Include="ISumAsyncExtensionsUtil.cs" />
+    <Compile Include="ResharperAnnotationHelpers.cs" />
     <Compile Include="StandardCommands\AddCommand.cs" />
     <Compile Include="StandardCommands\AddRangeCommand.cs" />
     <Compile Include="StandardCommands\RemoveCommand.cs" />

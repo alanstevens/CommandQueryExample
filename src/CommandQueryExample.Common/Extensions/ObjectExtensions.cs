@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using CommandQueryExample.Common.JetBrains.Annotations;
 
 namespace CommandQueryExample.Common.Extensions
 {
@@ -24,12 +25,14 @@ namespace CommandQueryExample.Common.Extensions
         }
 
         [DebuggerStepThrough]
+        [ContractAnnotation("null => true")]
         public static bool IsNull(this object value)
         {
             return ReferenceEquals(value, null);
         }
 
         [DebuggerStepThrough]
+        [ContractAnnotation("null => false")]
         public static bool IsNotNull(this object value)
         {
             return !ReferenceEquals(value, null);
