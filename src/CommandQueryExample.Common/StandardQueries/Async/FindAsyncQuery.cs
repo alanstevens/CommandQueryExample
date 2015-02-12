@@ -6,7 +6,7 @@ namespace CommandQueryExample.Common.StandardQueries.Async
     {
         public FindAsyncQuery(params object[] keyValues)
         {
-            _query = s => s.FindAsync(keyValues);
+            Query = s => s.FindAsync(keyValues);
         }
     }
 }

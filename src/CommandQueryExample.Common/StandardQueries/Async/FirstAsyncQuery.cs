@@ -9,8 +9,8 @@ namespace CommandQueryExample.Common.StandardQueries.Async
         public FirstAsyncQuery(Expression<Func<T, bool>> selector = null)
         {
             if (selector.IsNull())
-                _query = s => s.FirstAsync();
-            _query = s => s.FirstAsync(selector);
+                Query = s => s.FirstAsync();
+            Query = s => s.FirstAsync(selector);
         }
     }
 }

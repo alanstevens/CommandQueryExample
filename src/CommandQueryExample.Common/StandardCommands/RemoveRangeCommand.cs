@@ -7,7 +7,7 @@ namespace CommandQueryExample.Common.StandardCommands
     {
         public RemoveRangeCommand(IEnumerable<T> items)
         {
-            _action = s =>
+            Action = s =>
             {
                 s.RemoveRange(items);
                 foreach (var item in items)

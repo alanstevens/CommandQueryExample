@@ -6,7 +6,7 @@ namespace CommandQueryExample.Common.StandardQueries
     {
         public FindQuery(params object[] keyValues)
         {
-            _query = s => s.Find(keyValues);
+            Query = s => s.Find(keyValues);
         }
     }
 }

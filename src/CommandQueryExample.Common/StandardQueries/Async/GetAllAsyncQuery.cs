@@ -6,7 +6,7 @@ namespace CommandQueryExample.Common.StandardQueries.Async
     {
         public GetAllAsyncQuery()
         {
-            _query = s => s.ToListAsync();
+            Query = s => s.ToListAsync();
         }
     }
 }

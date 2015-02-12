@@ -5,11 +5,11 @@ namespace CommandQueryExample.Common
 {
     public abstract class BaseScalarQuery<T>
     {
-        protected Func<IQueryable<T>, T> _query;
+        protected Func<IQueryable<T>, T> Query { private get; set; }
 
         public virtual T Call(IQueryable<T> set)
         {
-            return _query.Invoke(set);
+            return Query.Invoke(set);
         }
     }
 }

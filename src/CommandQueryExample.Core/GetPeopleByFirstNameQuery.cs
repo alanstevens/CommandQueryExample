@@ -8,7 +8,7 @@ namespace CommandQueryExample.Core
     {
         public GetPeopleByFirstNameQuery(string firstName)
         {
-            _query = s => s.Where(x => x.FirstName == firstName).ToList();
+            Query = s => s.Where(x => x.FirstName == firstName).ToList();
         }
     }
 }

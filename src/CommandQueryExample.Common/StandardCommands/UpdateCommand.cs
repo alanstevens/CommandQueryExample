@@ -4,7 +4,7 @@
     {
         public UpdateCommand(T item)
         {
-            _action = s => MarkAsModified(item);
+            Action = s => MarkAsModified(item);
         }
     }
 }

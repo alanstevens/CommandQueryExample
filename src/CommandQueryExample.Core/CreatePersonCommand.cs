@@ -8,7 +8,7 @@ namespace CommandQueryExample.Core
     {
         public CreatePersonCommand(string firstName, string lastName)
         {
-            _action = s => s.Add(new Person {FirstName = firstName, LastName = lastName});
+            Action = s => s.Add(new Person {FirstName = firstName, LastName = lastName});
         }
     }
 }

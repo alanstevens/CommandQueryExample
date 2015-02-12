@@ -18,39 +18,25 @@ namespace CommandQueryExample.Data
         readonly WeakReference<DbContext> _context;
         readonly WeakReference<DbContextTransaction> _transaction;
 
-        public DbContext Context
-        {
-            get
-            {
-                if (IsDisposed) throw new ObjectDisposedException("DbContext has been disposed.");
-                if (_context.IsNull()) throw new NullReferenceException("dbContext is null.");
-
-                DbContext dbContext;
-                _context.TryGetTarget(out dbContext);
-
-                if (dbContext.IsNull()) throw new NullReferenceException("dbContext is null.");
-
-                return dbContext;
-            }
-        }
+        public DbContext Context { get { return RetrieveValidContext(); } }
 
         public int SaveChanges()
         {
-            var dbContext = ValidateContext();
+            var dbContext = RetrieveValidContext();
 
             return dbContext.SaveChanges();
         }
 
         public async Task<int> SaveChangesAsync()
         {
-            var dbContext = ValidateContext();
+            var dbContext = RetrieveValidContext();
 
             return await dbContext.SaveChangesAsync();
         }
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
-            var dbContext = ValidateContext();
+            var dbContext = RetrieveValidContext();
 
             return await dbContext.SaveChangesAsync(cancellationToken);
         }
@@ -59,31 +45,36 @@ namespace CommandQueryExample.Data
         {
             if (!disposing) return;
 
-            var dbContext = ValidateContext();
+            var dbContext = RetrieveValidContext();
 
             DbContextTransaction transaction = null;
 
             if (_transaction.IsNotNull())
                 _transaction.TryGetTarget(out transaction);
 
-            if (transaction.IsNotNull())
+            if (transaction.IsNull())
             {
-                try
-                {
-                    transaction.Commit();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    throw;
-                }
-                transaction.Dispose();
+                dbContext.Dispose();
+                return;
             }
 
-            dbContext.Dispose();
+            try
+            {
+                transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
+            finally
+            {
+                transaction.Dispose();
+                dbContext.Dispose();
+            }
         }
 
-        DbContext ValidateContext()
+        DbContext RetrieveValidContext()
         {
             if (IsDisposed) throw new ObjectDisposedException("DbContext has been disposed.");
             if (_context.IsNull()) throw new NullReferenceException("DbContext is null.");

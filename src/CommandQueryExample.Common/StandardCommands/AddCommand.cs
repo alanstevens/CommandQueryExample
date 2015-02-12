@@ -6,7 +6,7 @@ namespace CommandQueryExample.Common.StandardCommands
     {
         public AddCommand(T item)
         {
-            _action = s =>
+            Action = s =>
             {
                 s.Add(item);
                 MarkAsAdded(item);

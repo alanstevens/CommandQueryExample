@@ -6,11 +6,11 @@ namespace CommandQueryExample.Common
 {
     public abstract class BaseAsyncScalarQuery<T>
     {
-        protected Func<IQueryable<T>, Task<T>> _query;
+        protected Func<IQueryable<T>, Task<T>> Query { private get; set; }
 
         public async Task<T> CallAsync(IQueryable<T> set)
         {
-            return await _query.Invoke(set);
+            return await Query.Invoke(set);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace CommandQueryExample.Common.StandardQueries
     {
         public WhereQuery(Expression<Func<T, bool>> selector)
         {
-            _query = s => s.Where(selector).ToList();
+            Query = s => s.Where(selector).ToList();
         }
     }
 }

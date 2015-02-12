@@ -11,10 +11,10 @@ namespace CommandQueryExample.Common.StandardQueries
         {
             if (selector.IsNull())
             {
-                _query = s => s.FirstOrDefault();
+                Query = s => s.FirstOrDefault();
                 return;
             }
-            _query = s => s.FirstOrDefault(selector);
+            Query = s => s.FirstOrDefault(selector);
         }
     }
 }

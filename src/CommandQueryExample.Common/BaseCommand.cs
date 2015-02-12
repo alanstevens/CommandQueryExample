@@ -7,20 +7,21 @@ namespace CommandQueryExample.Common
     {
         protected BaseCommand()
         {
+            Action = x => { };
             MarkAsModified = x => x;
             MarkAsAdded = x => x;
             MarkAsDeleted = x => { };
         }
 
-        protected Action<IQueryable<T>> _action = x => { };
-
         public Func<T, T> MarkAsModified { get; set; }
         public Func<T, T> MarkAsAdded { get; set; }
         public Action<T> MarkAsDeleted { get; set; }
 
+        protected Action<IQueryable<T>> Action { private get; set; }
+
         public void Execute(IQueryable<T> set)
         {
-            _action.Invoke(set);
+            Action.Invoke(set);
         }
     }
 }

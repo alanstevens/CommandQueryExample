@@ -6,7 +6,7 @@ namespace CommandQueryExample.Common.StandardCommands
     {
         public RemoveCommand(T item)
         {
-            _action = s =>
+            Action = s =>
             {
                 s.Remove(item);
                 MarkAsDeleted(item);
@@ -15,7 +15,7 @@ namespace CommandQueryExample.Common.StandardCommands
 
         public RemoveCommand(params object[] keyValues)
         {
-            _action = s =>
+            Action = s =>
             {
                 var item = s.Find(keyValues);
                 Verify.NotNull(item, "item");

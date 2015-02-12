@@ -10,8 +10,8 @@ namespace CommandQueryExample.Common.StandardQueries
         public SingleQuery(Expression<Func<T, bool>> selector = null)
         {
             if (selector.IsNull())
-                _query = s => s.Single();
-            _query = s => s.Single(selector);
+                Query = s => s.Single();
+            Query = s => s.Single(selector);
         }
     }
 }

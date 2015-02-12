@@ -9,7 +9,7 @@ namespace CommandQueryExample.Common.StandardQueries.Async
     {
         public WhereAsyncQuery(Expression<Func<T, bool>> selector)
         {
-            _query = s => s.Where(selector).ToListAsync();
+            Query = s => s.Where(selector).ToListAsync();
         }
     }
 }

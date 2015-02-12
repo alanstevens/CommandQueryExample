@@ -7,7 +7,7 @@ namespace CommandQueryExample.Common.StandardCommands
     {
         public AddRangeCommand(IEnumerable<T> items)
         {
-            _action = s =>
+            Action = s =>
             {
                 s.AddRange(items);
                 foreach (var item in items)

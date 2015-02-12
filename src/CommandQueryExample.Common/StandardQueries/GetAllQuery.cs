@@ -6,7 +6,7 @@ namespace CommandQueryExample.Common.StandardQueries
     {
         public GetAllQuery()
         {
-            _query = s => s.AsEnumerable();
+            Query = s => s.AsEnumerable();
         }
     }
 }

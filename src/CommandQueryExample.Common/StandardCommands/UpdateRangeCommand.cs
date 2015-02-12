@@ -6,7 +6,7 @@ namespace CommandQueryExample.Common.StandardCommands
     {
         public UpdateRangeCommand(IEnumerable<T> items)
         {
-            _action = s =>
+            Action = s =>
             {
                 foreach (var item in items)
                     MarkAsModified(item);
