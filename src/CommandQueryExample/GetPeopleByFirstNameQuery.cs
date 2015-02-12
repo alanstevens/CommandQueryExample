@@ -2,7 +2,7 @@
 using CommandQueryExample.Common;
 using CommandQuerySample.Domain;
 
-namespace CommandQueryExample.Core
+namespace CommandQueryExample
 {
     public class GetPeopleByFirstNameQuery : BaseQuery<Person>
     {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using CommandQueryExample.Common;
 using CommandQueryExample.Common.Extensions;
 using CommandQueryExample.Common.StandardCommands;
-using CommandQueryExample.Core;
 using CommandQueryExample.Data;
 using CommandQuerySample.Domain;
 

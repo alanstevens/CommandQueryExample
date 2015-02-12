@@ -2,7 +2,7 @@
 using CommandQueryExample.Common.Extensions;
 using CommandQuerySample.Domain;
 
-namespace CommandQueryExample.Core
+namespace CommandQueryExample
 {
     public class CreatePersonCommand : BaseCommand<Person>
     {
