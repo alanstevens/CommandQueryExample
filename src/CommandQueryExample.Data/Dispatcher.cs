@@ -45,25 +45,23 @@ namespace CommandQueryExample.Data
 
             command.Execute(Context.Set<T>());
 
-            command.MarkAsModified = x => x;
-            command.MarkAsAdded = x => x;
+            command.MarkAsModified = x => { };
+            command.MarkAsAdded = x => { };
             command.MarkAsDeleted = x => { };
         }
 
-        static T MarkAsModified<T>(T entity) where T : class
+        static void MarkAsModified<T>(T entity) where T : class
         {
             var entry = GetEntry(entity);
             AttachIfNeeded(entry);
             entry.State = EntityState.Modified;
-            return entity;
         }
 
-        static T MarkAsAdded<T>(T entity) where T : class
+        static void MarkAsAdded<T>(T entity) where T : class
         {
             var entry = GetEntry(entity);
             AttachIfNeeded(entry);
             entry.State = EntityState.Added;
-            return entity;
         }
 
         static void MarkAsDeleted<T>(T entity) where T : class

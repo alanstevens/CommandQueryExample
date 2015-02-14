@@ -9,36 +9,32 @@ namespace CommandQueryExample.Data
 {
     public class DataContext : DisposableBase, IDataContext
     {
-        public DataContext(DbContext context, bool useTransaction = false)
+        public DataContext(DbContext context, bool useTransaction = false, bool disposeDbContext = true)
         {
+            _disposeDbContext = disposeDbContext;
             _context = new WeakReference<DbContext>(context);
             if (useTransaction) _transaction = new WeakReference<DbContextTransaction>(context.Database.BeginTransaction());
         }
 
         readonly WeakReference<DbContext> _context;
+        readonly bool _disposeDbContext;
         readonly WeakReference<DbContextTransaction> _transaction;
 
         public DbContext Context { get { return RetrieveValidContext(); } }
 
         public int SaveChanges()
         {
-            var dbContext = RetrieveValidContext();
-
-            return dbContext.SaveChanges();
+            return Context.SaveChanges();
         }
 
         public async Task<int> SaveChangesAsync()
         {
-            var dbContext = RetrieveValidContext();
-
-            return await dbContext.SaveChangesAsync();
+            return await Context.SaveChangesAsync();
         }
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
-            var dbContext = RetrieveValidContext();
-
-            return await dbContext.SaveChangesAsync(cancellationToken);
+            return await Context.SaveChangesAsync(cancellationToken);
         }
 
         protected override void OnDisposing(bool disposing)
@@ -54,7 +50,7 @@ namespace CommandQueryExample.Data
 
             if (transaction.IsNull())
             {
-                dbContext.Dispose();
+                if (_disposeDbContext) dbContext.Dispose();
                 return;
             }
 
@@ -70,13 +66,14 @@ namespace CommandQueryExample.Data
             finally
             {
                 transaction.Dispose();
-                dbContext.Dispose();
+                if (_disposeDbContext) dbContext.Dispose();
             }
         }
 
         DbContext RetrieveValidContext()
         {
-            if (IsDisposed) throw new ObjectDisposedException("DbContext has been disposed.");
+            if (IsDisposed && _disposeDbContext) throw new ObjectDisposedException("DbContext has been disposed.");
+            if (IsDisposed) throw new ObjectDisposedException("DataContext has been disposed.");
             if (_context.IsNull()) throw new NullReferenceException("DbContext is null.");
             DbContext dbContext;
             _context.TryGetTarget(out dbContext);
